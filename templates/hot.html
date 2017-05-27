@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Горячие статьи</h1>
+    {% for post in hot_posts %}
+        <div>
+            <h2><a href="{% url 'post_show' slug=post.slug %}">{{ post.title }}</a></h2>
+            <p>{{ post.created_at }}, {{ post.author_id }}</a></p>
+            <p>{{ post.text }}</p>
+            <p>Рейтинг: {{ post.rating }}</p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>Нет статей</p>
+    {% endfor %}
+{% endblock %}
